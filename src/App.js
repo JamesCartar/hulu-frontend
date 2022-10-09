@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import BundleTerms from './components/BundleTerms';
+import InsideParent from './pages/InsideParent';
+import OutsideParent from './pages/OutsideParent';
+import { context } from './context/mainContext';
+
 
 function App() {
+  const { value: { user } } = useContext(context);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={user ? <Navigate to='/home' /> : <OutsideParent />} />
+        <Route path='/home/*' element={ user ? <InsideParent /> : <Navigate to='/' /> } />
+        <Route path='/terms/disney-bundle' element={<BundleTerms />} />
+      </Routes>
     </div>
   );
 }
