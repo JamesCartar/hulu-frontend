@@ -1,23 +1,14 @@
 import axios from 'axios';
-import http from './http-common';
 
-class fetchTwentyScreenPlay {
+class FetchTwentyScreenPlay {
 
-    getTwentyMovie(token) {
-        return axios.get('http://www.localhost:8000/screenplay/twentymovie', {
-            headers: {
-                authorization: token
-            }
-        });
+    getTwentyMovie() {
+        return axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`);
     }
 
-    getTwentySeries(token) {
-        return axios.get('http://www.localhost:8000/screenplay/twentytvshow', {
-            headers: {
-                authorization: token
-            }
-        });
+    getTwentySeries() {
+        return axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}`);
     }
 }
 
-export default new fetchTwentyScreenPlay();
+export default new FetchTwentyScreenPlay();

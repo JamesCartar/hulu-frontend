@@ -48,8 +48,8 @@ function SecondPage() {
         </div>
     ));
 
-    const similarIdScreenPlayCard = similarScreenPlayById?.map((screenplay) => (
-        <SwiperSlide className='flex items-center justify-center'>
+    const similarIdScreenPlayCard = similarScreenPlayById?.map((screenplay, index) => (
+        <SwiperSlide className='flex items-center justify-center' key={index}>
             <div>
                 <img className='block object-cover object-top w-56 h-32 rounded-lg' 
                     src={`https://image.tmdb.org/t/p/w342${screenplay.backdrop_path}`} 

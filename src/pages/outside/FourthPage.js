@@ -42,7 +42,7 @@ const TABDATA = {
 
 function FourthPage() {
   const [currentTab, setCurrentTap] = useState('sport');
-  const [matchWidth, setMatchWidth] = useState(window.matchMedia("(max-width: 840px)").matches );
+  const [matchWidth, setMatchWidth] = useState(() => window.matchMedia("(max-width: 840px)").matches );
 
   useEffect(() => {
     const handler = e => setMatchWidth(e.matches);
@@ -58,6 +58,12 @@ function FourthPage() {
 
     return () => {
       window.matchMedia("(max-width: 840px)").removeEventListener('change', handler);
+      tabs.forEach((tab) => {
+        tab.removeEventListener('click', () => {
+          document.querySelector('.tab.active').classList.remove('active');
+          tab.classList.add('active')
+        })
+      })
     }
   }, [matchWidth]);
 

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
+import { SyncLoader } from 'react-spinners';
+
 import LandingPageContextProvider, { LandingPageContext } from '../context/landingPage/LandingPageContext';
-import FirstPage from './inside/FirstPage';
+import InsideMain from './inside/InsideMain';
 import Navbar from './inside/Navbar';
 
 
@@ -8,12 +10,10 @@ function InsideParent() {
 
 
   return (
-    <>
+    <LandingPageContextProvider>
       <Navbar />
-      <LandingPageContextProvider>
-        <FirstPage />
-      </LandingPageContextProvider>
-    </>
+      <InsideMain />
+    </LandingPageContextProvider>
   )
 }
 

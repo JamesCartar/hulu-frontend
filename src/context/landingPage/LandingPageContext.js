@@ -1,19 +1,27 @@
-import React, {useReducer, createContext} from 'react';
+import React, {useReducer, createContext, useState, useEffect} from 'react';
+import axios from 'axios';
+
 import LandingPageReducer from './LandingPageReducer';
 
 
 const INITIAL_STATE = {
     isFetching: false,
+    featureMovie: {},
     twentyMovies: [],
     twentySeries: [],
+    genres: [],
     error: false,
 }
 
 
-export const LandingPageContext = createContext(INITIAL_STATE)
+export const LandingPageContext = createContext(INITIAL_STATE);
 
 function LandingPageContextProvider({ children }) {
-  const [state, dispatch] = useReducer(LandingPageReducer, INITIAL_STATE);
+  const [ state, dispatch ] = useReducer(LandingPageReducer, INITIAL_STATE);
+
+
+
+
   return (
     <LandingPageContext.Provider value={{
       ...state,

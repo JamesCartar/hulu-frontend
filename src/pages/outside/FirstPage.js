@@ -20,18 +20,14 @@ function FirstPage() {
     password: '' 
   });
 
-
-  const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
     if(e.target.id === 'login') {
         const { name, ...loginInfo } = userInfo;
         LoginOrRegister('login', loginInfo);
-        navigate('../home', { replace: true });
     } else if(e.target.id === 'signup') {
         LoginOrRegister('register', userInfo);
-        navigate('../home', { replace: true });
     }
   }
 

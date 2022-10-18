@@ -5,6 +5,7 @@ import BundleTerms from './components/BundleTerms';
 import InsideParent from './pages/InsideParent';
 import OutsideParent from './pages/OutsideParent';
 import { context } from './context/mainContext';
+import LandingPageContextProvider from './context/landingPage/LandingPageContext';
 
 
 function App() {
@@ -13,7 +14,10 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={user ? <Navigate to='/home' /> : <OutsideParent />} />
-        <Route path='/home/*' element={ user ? <InsideParent /> : <Navigate to='/' /> } />
+        <Route path='/home/*' element={ user ? 
+            <InsideParent />
+          : <Navigate to='/' /> } 
+        />
         <Route path='/terms/disney-bundle' element={<BundleTerms />} />
       </Routes>
     </div>

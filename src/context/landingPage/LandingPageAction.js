@@ -1,17 +1,20 @@
 export const FetchingStart = () => ({
     type: 'FETCHING_START'
-})
+});
 
-export const FetchingMovieSuccess = (movies) => ({
-    type: 'FETCHING_MOVIE_SUCCESS',
-    payload: movies
-})
+export const FetchingFeatureMovieSuccess = (featureMovie, genres) => {
+    return ({
+        type: 'FETCHING_FEATURE_MOVIE_SUCCESS',
+        payload: { featureMovie, genres }
+    })
+}
 
-export const FetchingSeriesSuccess = (series) => ({
-    type: 'FETCHING_SERIES_SUCCESS',
-    payload: series
-})
+
+export const FetchingScreenPlaySuccess = (movies, series) => ({
+    type: 'FETCHING_SCREENPLAY_SUCCESS',
+    payload: { twentyMovies : movies, twentySeries : series }
+});
 
 export const FetchingFailure = () => ({
-    type: "FETCHING_FAILURE",
+    type: "FETCHING_FAILURE"
 });
