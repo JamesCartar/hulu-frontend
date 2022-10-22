@@ -4,6 +4,7 @@
 html {
   scroll-behavior: smooth;
 }
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');
 
 @font-face {
     font-family: "logoFont";   /*Can be any text*/
@@ -29,6 +30,10 @@ body {
     font-size: 1rem;
     color: #eee;
     margin: 0;
+}
+
+.feature-movie-title {
+    font-family: 'Tiro Bangla', serif;
 }
 
 h1 {

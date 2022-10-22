@@ -1,7 +1,7 @@
 import http from './http-common';
 
 class FetchFeatureMovie {
-    getFeatureMovie(userInfo) {
+    getFeatureMovie() {
         return http.get('/screenplay/featureMovie');
     }
 }
