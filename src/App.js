@@ -6,6 +6,8 @@ import InsideParent from './pages/InsideParent';
 import OutsideParent from './pages/OutsideParent';
 import { context } from './context/mainContext';
 import LandingPageContextProvider from './context/landingPage/LandingPageContext';
+import MovieDetail from './pages/inside/MovieDetail';
+import SeriesDetail from './pages/inside/SeriesDetail';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           : <Navigate to='/' /> } 
         />
         <Route path='/terms/disney-bundle' element={<BundleTerms />} />
+        <Route path='/home/movies/:id' element={<MovieDetail />} />
+        <Route path='/home/series/:id' element={<SeriesDetail />} />
       </Routes>
     </div>
   );

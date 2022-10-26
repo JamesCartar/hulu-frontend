@@ -111,7 +111,7 @@ function SecondPage() {
                                 </p>
                             </main>
                         </div>
-                        <div className='bg-darkBg px-4'>
+                        <div className='bg-darkBg px-4 outside-slider'>
                             <p className='text-lg py-6'>Similar {currentScreenPlay.movieOrTv}</p>
                             <Swiper
                                 slidesPerView={2}

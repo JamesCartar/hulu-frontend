@@ -4,8 +4,12 @@ const LandingPageReducer = (state, action) => {
             return {
                 isFetching: true,
                 featureMovie: {},
-                twentyMovies: [],
-                twentySeries: [],
+                twentyPopularMovies: [],
+                twentyPopularSeries: [],
+                twentyLatestMovies: [],
+                twentyLatestSeries: [],
+                twentyMovieTrailerList: [],
+                twentySeriesTrailerList: [],
                 genres: [],
                 error: false,
             }
@@ -13,8 +17,12 @@ const LandingPageReducer = (state, action) => {
             return {
                 isFetching: false,
                 featureMovie: action.payload.featureMovie,
-                twentyMovies: state.twentyMovies,
-                twentySeries: state.twentySeries,
+                twentyPopularMovies: state.twentyPopularMovies,
+                twentyPopularSeries: state.twentyPopularSeries,
+                twentyLatestMovies: state.twentyLatestMovies,
+                twentyLatestSeries: state.twentyLatestSeries,
+                twentyMovieTrailerList: state.twentyMovieTrailerList,
+                twentySeriesTrailerList: state.twentySeriesTrailerList,
                 genres: action.payload.genres,
                 error: false,
             }
@@ -22,8 +30,12 @@ const LandingPageReducer = (state, action) => {
             return {
                 isFetching: false,
                 featureMovie: state.featureMovie,
-                twentyMovies: action.payload.twentyMovies,
-                twentySeries: action.payload.twentySeries,
+                twentyPopularMovies: action.payload.twentyPopularMovies,
+                twentyPopularSeries: action.payload.twentyPopularSeries,
+                twentyLatestMovies: action.payload.twentyLatestMovies,
+                twentyLatestSeries: action.payload.twentyLatestSeries,
+                twentyMovieTrailerList: action.payload.twentyMovieTrailerList,
+                twentySeriesTrailerList: action.payload.twentySeriesTrailerList,
                 genres: state.genres,
                 error: false,
             }
@@ -31,8 +43,12 @@ const LandingPageReducer = (state, action) => {
             return {
                 isFetching: false,
                 featureMovie: {},
-                twentyMovies: [],
-                twentySeries: [],
+                twentyPopularMovies: [],
+                twentyPopularSeries: [],
+                twentyLatestMovies: [],
+                twentyLatestSeries: [],
+                twentyMovieTrailerList: [],
+                twentySeriesTrailerList: [],
                 genres: [],
                 error: true,
             }

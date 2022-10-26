@@ -12,7 +12,14 @@ export const FetchingFeatureMovieSuccess = (featureMovie, genres) => {
 
 export const FetchingScreenPlaySuccess = (movies, series) => ({
     type: 'FETCHING_SCREENPLAY_SUCCESS',
-    payload: { twentyMovies : movies, twentySeries : series }
+    payload: { 
+        twentyPopularMovies : movies.popular, 
+        twentyPopularSeries : series.popular,
+        twentyLatestMovies : movies.latest, 
+        twentyLatestSeries : series.latest,
+        twentyMovieTrailerList: movies.trailer,
+        twentySeriesTrailerList: series.trailer,
+    }
 });
 
 export const FetchingFailure = () => ({

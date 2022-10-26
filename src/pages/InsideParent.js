@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import { SyncLoader } from 'react-spinners';
-
 import LandingPageContextProvider, { LandingPageContext } from '../context/landingPage/LandingPageContext';
 import InsideMain from './inside/InsideMain';
 import Navbar from './inside/Navbar';
+import Footer from '../components/partials/Footer';
 
 
 function InsideParent() {
@@ -13,6 +12,7 @@ function InsideParent() {
     <LandingPageContextProvider>
       <Navbar />
       <InsideMain />
+      <Footer />
     </LandingPageContextProvider>
   )
 }

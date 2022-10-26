@@ -1,5 +1,4 @@
 import React, {useReducer, createContext, useState, useEffect} from 'react';
-import axios from 'axios';
 
 import LandingPageReducer from './LandingPageReducer';
 
@@ -7,8 +6,12 @@ import LandingPageReducer from './LandingPageReducer';
 const INITIAL_STATE = {
     isFetching: false,
     featureMovie: {},
-    twentyMovies: [],
-    twentySeries: [],
+    twentyPopularMovies: [],
+    twentyPopularSeries: [],
+    twentyLatestMovies: [],
+    twentyLatestSeries: [],
+    twentyMovieTrailerList: [],
+    twentySeriesTrailerList: [],
     genres: [],
     error: false,
 }

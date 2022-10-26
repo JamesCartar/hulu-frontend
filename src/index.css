@@ -114,35 +114,68 @@ button {
 
 
 @media (min-width: 300px) and (max-width: 640px)  {
-    .swiper-button-next,
-    .swiper-button-prev {
+    .outside-slider .swiper-button-next,
+    .outside-slider .swiper-button-prev {
         margin-top: -30px !important;
     }
 }
 
 
-/* fourth page */
 
+/* ------ inside page ---------- */
 
-/* .tab.active::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background-color: #fff;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    animation-name: tabIndicater;
-    animation-duration: .3s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
+/* second page */
+
+.win,
+.mar{
+    animation-name: fadingAtStart;
+    animation-duration: 1s;
+    animation-timing-function: linear;
 }
 
-@keyframes tabIndicater {
+@keyframes fadingAtStart {
     0% {
-        width: 0%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
     }
     100% {
-        width: 100%;
+        opacity: 1;
+    }
+}
+
+.mar{
+    animation-name: fadingAtEnd;
+}
+
+@keyframes fadingAtEnd {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+@media (min-width: 300px) and (max-width: 824px)  {
+    .inside-slider .swiper-button-next,
+    .inside-slider .swiper-button-prev {
+        margin-top: -30px !important;
+    }
+}
+
+
+/* 
+
+@media (min-width: 828px) and (max-width: 1200px)  {
+    .inside-slider .swiper-button-next,
+    .inside-slider .swiper-button-prev {
+        margin-top: -80px !important;
     }
 } */

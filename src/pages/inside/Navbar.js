@@ -40,7 +40,7 @@ function Navbar() {
 
 
   return (
-    <nav className={`z-50 bg-black border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full fixed ${ scrollDirection === "down" ? "-top-24" : "top-0" } transition-all duration-500`}>
+    <nav className={`z-50 bg-[#032541] border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full fixed ${ scrollDirection === "down" ? "-top-24" : "top-0" } transition-all duration-500`}>
         <div className="container flex flex-wrap justify-between items-center mx-auto">
             <a href="/home" className="flex items-center">
                 <h1 className="self-center text-primary text-3xl font-semibold whitespace-nowrap dark:text-white">hulu</h1>
@@ -69,7 +69,7 @@ function Navbar() {
                     </div>
                     <input type="text" id="search-navbar" className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
                 </div>
-                <ul className="flex flex-col mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-black dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul className="flex flex-col mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-[#032541] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li className='relative'>
                         <button className="peer flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-600 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:px-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                             <span className="sr-only">Open movies menu</span>

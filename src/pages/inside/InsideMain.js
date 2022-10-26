@@ -5,7 +5,11 @@ import { SyncLoader } from 'react-spinners';
 import { twentyScreenPlay } from '../../context/landingPage/ApiCalls';
 import { LandingPageContext } from '../../context/landingPage/LandingPageContext';
 import { context } from '../../context/mainContext';
+
 import FirstPage from './FirstPage';
+import SecondPage from './SecondPage';
+import { Route, Routes } from 'react-router-dom';
+import MovieDetail from './MovieDetail';
 
 
 function InsideMain() {
@@ -30,6 +34,7 @@ function InsideMain() {
       :
       <>
         <FirstPage />
+        <SecondPage />  
       </>
     }
     </div>
