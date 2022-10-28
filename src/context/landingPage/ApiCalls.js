@@ -39,4 +39,4 @@ export const twentyScreenPlay = async (dispatch) => {
     } catch (error) {
         dispatch(FetchingFailure());
     }
-}
+};

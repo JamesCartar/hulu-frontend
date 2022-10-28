@@ -21,9 +21,9 @@ function Navbar() {
         window.addEventListener("scroll", updateScrollDirection); // add event listener
         
         return () => {
-        window.removeEventListener("scroll", updateScrollDirection); // clean up
+            window.removeEventListener("scroll", updateScrollDirection); // clean up
         }
-    }, [scrollDirection]);
+    }, [ scrollDirection ]);
 
 
     const handleClick = () => {
@@ -32,7 +32,7 @@ function Navbar() {
 
     const toggleMobileMenu = () => {
         if(navState) {
-            setNavState('')
+            setNavState('');
         } else {
             setNavState('hidden');
         }
