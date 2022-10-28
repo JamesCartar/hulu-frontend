@@ -67,9 +67,9 @@ function SecondPage() {
   }, [ currentTrailerId ])
 
   
-  let popularScreenPlayEl = makeScreenPlayElement(popularScreenPlay, activePopularScreenPlayTab);
-  let latestScreenPlayEl = makeScreenPlayElement(latestScreenPlay, activeLatestScreenPlayTab);
-  let screenPlayTrailerEl = makeScreenPlayElement(screenPlayTrailer, activeScreenPlayTrailerTab);
+  let popularScreenPlayEl = renderScreenPlayElement(popularScreenPlay, activePopularScreenPlayTab, activePopularScreenPlayTab);
+  let latestScreenPlayEl = renderScreenPlayElement(latestScreenPlay, activeLatestScreenPlayTab, activeLatestScreenPlayTab);
+  let screenPlayTrailerEl = renderScreenPlayElement(screenPlayTrailer, activeScreenPlayTrailerTab);
 
   function openTrailerPopUp(screenPlayId) {
     openPopup('screenPlayTrailer');
@@ -102,12 +102,13 @@ function SecondPage() {
   }
 
 
-  function makeScreenPlayElement(screenPlayObj, screenPlayTab) {
-    return screenPlayObj[screenPlayTab]?.map((screenPlay, index) => (
+  function renderScreenPlayElement(screenPlayObj, screenPlayTab, activeScreenPlayTab) {
+    return screenPlayObj[screenPlayTab]?.map((screenPlay, index) => {
+      return (
       <SwiperSlide className='flex items-center justify-center' key={index}>
         {
           !screenPlayTab.includes('Trailer') ? (
-            <Link to={`${activePopularScreenPlayTab.includes('Movies') ? 'movies' : 'series'}/${screenPlay.id}`}>
+            <Link to={`${activeScreenPlayTab.includes('Movies') ? 'movies' : 'series'}/${screenPlay.id}`}>
               <div>
                 <img className='block object-cover object-top w-64 rounded-lg' 
                     src={`https://image.tmdb.org/t/p/w342${ screenPlay.poster_path }`} 
@@ -131,15 +132,15 @@ function SecondPage() {
           )
         }
       </SwiperSlide> 
-    ));
+    )});
   }
   
 
   return (
-    <div className='bg-[#163246] text-white min-h-screen'>
+    <div className='bg-[#163246] text-white secondPage'>
       <div className='inside-slider p-5 sm:py-10 bg-contain bg-no-repeat bg-white bg-center text-black'  style={{backgroundImage: `url(${trendingBackground})`}}>
         <div className='flex align-center flex-col sm:flex-row'>
-          <span className='text-xl pr-5 py-2 sm:text-start text-center'>What's Popular</span>
+          <span className='text-xl pr-5 py-2 sm:text-start text-center font-bold'>What's Popular</span>
           <div className='relative flex rounded-full border border-black w-max sm:mx-0 mx-auto sm:mt-0 mt-3'>
             <span onClick={changeTab} id='popularSeries' className={`cursor-pointer ${activePopularScreenPlayTab === 'popularSeries' ? 'text-primary bg-[#032541]' : ''} rounded-full px-4 py-2`}>On Tv</span>
             <span onClick={changeTab} id='popularMovies' className={`cursor-pointer ${activePopularScreenPlayTab === 'popularMovies' ? 'text-primary bg-[#032541]' : ''} rounded-full px-4 py-2`}>In Theaters</span>
@@ -177,7 +178,7 @@ function SecondPage() {
       </div>
       <div className='inside-slider tralier-slider relative p-5 sm:py-10 bg-cover bg-no-repeat bg-top' style={trailerSectionstyle}>
         <div className='flex align-center flex-col sm:flex-row'>
-          <span className='text-xl pr-5 py-2 sm:text-start text-center'>Latest Trailers</span>
+          <span className='text-xl pr-5 py-2 sm:text-start text-center font-bold'>Latest Trailers</span>
           <div className='relative flex rounded-full border border-white w-max sm:mx-0 mx-auto sm:mt-0 mt-3'>
             <span onClick={changeTab} id='seriesTrailer' className={`cursor-pointer ${activeScreenPlayTrailerTab === 'seriesTrailer' ? 'text-primary bg-white' : ''} rounded-full px-4 py-2`}>On Tv</span>
             <span onClick={changeTab} id='movieTrailer' className={`cursor-pointer ${activeScreenPlayTrailerTab === 'moviesTrailer' ? 'text-primary bg-white' : ''} rounded-full px-4 py-2`}>In Theaters</span>
@@ -227,7 +228,7 @@ function SecondPage() {
       </div>
       <div className='inside-slider p-5 sm:py-10'>
         <div className='flex align-center flex-col sm:flex-row'>
-          <span className='text-xl pr-5 py-2 sm:text-start text-center'>What's Trending</span>
+          <span className='text-xl pr-5 py-2 sm:text-start text-center font-bold'>What's Trending</span>
           <div className='relative flex rounded-full border border-white w-max sm:mx-0 mx-auto sm:mt-0 mt-3'>
             <span onClick={changeTab} id='latestSeries' className={`cursor-pointer ${activeLatestScreenPlayTab === 'latestSeries' ? 'text-primary bg-white' : ''} rounded-full px-4 py-2`}>On Tv</span>
             <span onClick={changeTab} id='latestMovies' className={`cursor-pointer ${activeLatestScreenPlayTab === 'latestMovies' ? 'text-primary bg-white' : ''} rounded-full px-4 py-2`}>In Theaters</span>

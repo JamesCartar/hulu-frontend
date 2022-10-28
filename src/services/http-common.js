@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: "http://www.localhost:8000",
+    baseURL: "https://hulu-backend-v1.herokuapp.com",
     headers: {
         'Content-type': 'application/json'
     }

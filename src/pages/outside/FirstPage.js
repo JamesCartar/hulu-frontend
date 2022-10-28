@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 // icons
 import { AiOutlineClose } from 'react-icons/ai';
@@ -19,6 +19,10 @@ function FirstPage() {
     email: '',
     password: '' 
   });
+
+  useEffect(() => {
+    localStorage.setItem('hasReloaded', false);
+  }, [])
 
   
   const handleSubmit = (e) => {
