@@ -1,4 +1,5 @@
 import React, {useReducer, createContext, useState, useEffect} from 'react';
+import WatchListFeature from '../../services/watchList';
 
 import LandingPageReducer from './LandingPageReducer';
 
@@ -13,6 +14,7 @@ const INITIAL_STATE = {
     twentyMovieTrailerList: [],
     twentySeriesTrailerList: [],
     genres: [],
+    watchList: [],
     error: false,
 }
 
@@ -25,10 +27,26 @@ function LandingPageContextProvider({ children }) {
 
 
 
+  function handleAddToWatchList(screenplayInfo) {
+    return WatchListFeature.AddWatchList(screenplayInfo);
+  }
+
+  function handleDeleteAWatchList(screenPlayId) {
+    return WatchListFeature.DeleteAWatchList(screenPlayId);
+  }
+
+  function handleClearWatchList(user_id) {
+    return WatchListFeature.ClearWatchList(user_id)
+  }
+
+
   return (
     <LandingPageContext.Provider value={{
       ...state,
-      dispatch
+      dispatch,
+      handleAddToWatchList,
+      handleDeleteAWatchList,
+      handleClearWatchList
     }}>
       { children }
     </LandingPageContext.Provider>

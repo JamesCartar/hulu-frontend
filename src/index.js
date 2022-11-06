@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import 'flowbite';
 
@@ -8,19 +8,27 @@ import App from './App';
 import { ContextProvider } from './context/mainContext';
 import LandingPageContextProvider from './context/landingPage/LandingPageContext';
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-// );
-
-
-const rootNode = document.getElementById('root');
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container); 
+root.render(
   <Router>
     <ContextProvider>
       <LandingPageContextProvider>
         <App />
       </LandingPageContextProvider>
     </ContextProvider>
-  </Router>,
-  rootNode
+  </Router>
 );
+
+
+// const rootNode = document.getElementById('root');
+// ReactDOM.render(
+//   <Router>
+//     <ContextProvider>
+//       <LandingPageContextProvider>
+//         <App />
+//       </LandingPageContextProvider>
+//     </ContextProvider>
+//   </Router>,
+//   rootNode
+// );

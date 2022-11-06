@@ -172,12 +172,14 @@ button {
     }
 }
 
+/* movie detail page */
 
-/* 
-
-@media (min-width: 828px) and (max-width: 1200px)  {
-    .inside-slider .swiper-button-next,
-    .inside-slider .swiper-button-prev {
-        margin-top: -80px !important;
-    }
+/* .cast-swiper .swiper-slide {
+    min-height: 288px !important;
 } */
+
+
+.cast-swiper .swiper-button-next,
+.cast-swiper .swiper-button-prev {
+    margin-top: -10px !important;
+}

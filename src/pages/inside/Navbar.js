@@ -78,16 +78,16 @@ function Navbar() {
                         {/* movies dropdown */}
                         <ul className="absolute top-full left-1/2 transform -translate-x-1/2 hidden peer-hover:block hover:block z-10 w-5/6 md:w-44 text-black font-normal bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                             <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Popular</a>
+                                <a href="/home/movies/popular" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Popular</a>
                             </li>
                             <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Now Playing</a>
+                                <a href="/home/movies/now_playing" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Now Playing</a>
                             </li>
                             <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Upcoming</a>
+                                <a href="/home/movies/upcoming" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Upcoming</a>
                             </li>
                             <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Top Rated</a>
+                                <a href="/home/movies/top_rated" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Top Rated</a>
                             </li>
                         </ul>
                     </li>
@@ -99,16 +99,16 @@ function Navbar() {
                         {/* series dropdown */}
                         <ul className="absolute top-full left-1/2 transform -translate-x-1/2 hidden peer-hover:block hover:block z-10 w-5/6 md:w-44 text-black font-normal bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                         <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Popular</a>
+                            <a href="/home/series/popular" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Popular</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Airing Today</a>
+                            <a href="/home/series/airing_today" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Airing Today</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">On TV</a>
+                            <a href="/home/series/on_tv" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">On TV</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Top Rated</a>
+                            <a href="/home/series/top_rated" className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Top Rated</a>
                         </li>
                         </ul>
                     </li>
@@ -122,6 +122,9 @@ function Navbar() {
                             <li className="py-3 px-4">
                                 <span className="block text-sm text-gray-900 dark:text-white">{user.name}</span>
                                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{user.email}</span>
+                            </li>
+                            <li className="py-3 px-4">
+                                <a href='/home/watch_list' className="block text-sm text-gray-900 dark:text-white">Watch List</a>
                             </li>
                             <li>
                                 <button onClick={handleClick} className="block w-full py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>

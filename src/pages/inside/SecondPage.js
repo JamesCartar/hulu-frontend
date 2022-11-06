@@ -29,7 +29,7 @@ function SecondPage() {
     twentyLatestMovies, 
     twentyLatestSeries, 
     twentyMovieTrailerList, 
-    twentySeriesTrailerList
+    twentySeriesTrailerList,
   } = useContext(LandingPageContext);
   const [ activePopularScreenPlayTab, setActivePopularScreenPlayTab ] = useState('popularSeries');
   const [ activeScreenPlayTrailerTab, setActiveScreenPlayTrailerTab ] = useState('moviesTrailer');

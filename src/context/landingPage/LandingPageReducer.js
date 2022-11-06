@@ -11,6 +11,7 @@ const LandingPageReducer = (state, action) => {
                 twentyMovieTrailerList: [],
                 twentySeriesTrailerList: [],
                 genres: [],
+                watchList: [],
                 error: false,
             }
         case 'FETCHING_FEATURE_MOVIE_SUCCESS':
@@ -24,6 +25,7 @@ const LandingPageReducer = (state, action) => {
                 twentyMovieTrailerList: state.twentyMovieTrailerList,
                 twentySeriesTrailerList: state.twentySeriesTrailerList,
                 genres: action.payload.genres,
+                watchList: state.watchList,
                 error: false,
             }
         case 'FETCHING_SCREENPLAY_SUCCESS':
@@ -37,6 +39,7 @@ const LandingPageReducer = (state, action) => {
                 twentyMovieTrailerList: action.payload.twentyMovieTrailerList,
                 twentySeriesTrailerList: action.payload.twentySeriesTrailerList,
                 genres: state.genres,
+                watchList: action.payload.watchList,
                 error: false,
             }
         case 'FETCHIN_FAILURE':
@@ -50,6 +53,7 @@ const LandingPageReducer = (state, action) => {
                 twentyMovieTrailerList: [],
                 twentySeriesTrailerList: [],
                 genres: [],
+                watchList: [],
                 error: true,
             }
         default:
