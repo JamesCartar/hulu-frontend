@@ -33,8 +33,8 @@ function App() {
   return (
     <div className='overflow-x-hidden'>
       <Routes>
-        <Route path='/land' element={state.user ? <Navigate to='/home' /> : <OutsideParent />} />
-        <Route path='/home' element={ state.user ? <InsideParent /> : <Navigate to='/land' /> } />
+        <Route path='/' element={state.user ? <Navigate to='/home' /> : <OutsideParent />} />
+        <Route path='/home' element={ state.user ? <InsideParent /> : <Navigate to='/' /> } />
         <Route path='/terms/disney-bundle' element={<BundleTerms />} />
         <Route path='/home/movies/popular' element={ state.user ? <PopularMovie /> : <Navigate to='/' /> } />
         <Route path='/home/movies/now_playing' element={ state.user ? <NowPlayingMovie /> : <Navigate to='/' /> } />
