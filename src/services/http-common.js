@@ -8,7 +8,7 @@ if(localStorage.getItem('user')) {
 }
 
 export default axios.create({
-    baseURL: "https://hulu-backend-v1.herokuapp.com",
+    baseURL: "http://www.localhost:8000",
     headers: {
         'Content-type': 'application/json',
         'Authorization': token,

@@ -1,11 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { context } from '../../context/mainContext';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { LandingPageContext } from '../../context/landingPage/LandingPageContext';
 
 function Navbar() {
     const [ navState, setNavState ] = useState('hidden');
     const [scrollDirection, setScrollDirection] = useState('up');
-    
-    const { value: { user },  logout } = useContext(context);
+    const { state, handleLogout } = useContext(LandingPageContext);
+
+    const navigate = useNavigate();
+
+   
 
     useEffect(() => {
         let lastScrollY = window.pageYOffset;
@@ -25,17 +30,17 @@ function Navbar() {
         }
     }, [ scrollDirection ]);
 
-
-    const handleClick = () => {
-        logout();
-    }
-
     const toggleMobileMenu = () => {
         if(navState) {
             setNavState('');
         } else {
             setNavState('hidden');
         }
+    }
+
+    const handleUserLogout = () => {
+        handleLogout()
+        navigate("/land");
     }
 
 
@@ -120,14 +125,14 @@ function Navbar() {
                         {/* profile dropdown */}
                         <ul className="absolute top-full left-1/2 transform -translate-x-1/2 hidden peer-hover:block hover:block z-10 w-5/6 md:w-44 text-black font-normal bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                             <li className="py-3 px-4">
-                                <span className="block text-sm text-gray-900 dark:text-white">{user.name}</span>
-                                <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{user.email}</span>
+                                <span className="block text-sm text-gray-900 dark:text-white">{state.user.name}</span>
+                                <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{state.user.email}</span>
                             </li>
                             <li className="py-3 px-4">
                                 <a href='/home/watch_list' className="block text-sm text-gray-900 dark:text-white">Watch List</a>
                             </li>
                             <li>
-                                <button onClick={handleClick} className="block w-full py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+                                <Link to='/land' onClick={handleUserLogout} className="block w-full py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
                             </li>
                         </ul>
                     </li>

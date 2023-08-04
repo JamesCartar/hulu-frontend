@@ -21,15 +21,17 @@ import { AiOutlineClose } from 'react-icons/ai';
 import trendingBackground  from '../../images/trending-bg.jpg';
 
 function SecondPage() {
-  
-  const {value: { isShown, popUpText}, openPopup, closePopup} = useContext(context);
   const { 
-    twentyPopularMovies,
-    twentyPopularSeries, 
-    twentyLatestMovies, 
-    twentyLatestSeries, 
-    twentyMovieTrailerList, 
-    twentySeriesTrailerList,
+    state: {
+      isShown, popUpText,
+      twentyPopularMovies,
+      twentyPopularSeries, 
+      twentyLatestMovies, 
+      twentyLatestSeries, 
+      twentyMovieTrailerList, 
+      twentySeriesTrailerList 
+    },
+    handleOpenPopup, handleClosePopup
   } = useContext(LandingPageContext);
   const [ activePopularScreenPlayTab, setActivePopularScreenPlayTab ] = useState('popularSeries');
   const [ activeScreenPlayTrailerTab, setActiveScreenPlayTrailerTab ] = useState('moviesTrailer');
@@ -43,6 +45,9 @@ function SecondPage() {
     popularMovies: twentyPopularMovies,
     popularSeries: twentyPopularSeries,
   }
+
+  console.log(useContext(context));
+
   const latestScreenPlay = {
     latestMovies: twentyLatestMovies,
     latestSeries: twentyLatestSeries,
@@ -72,7 +77,7 @@ function SecondPage() {
   let screenPlayTrailerEl = renderScreenPlayElement(screenPlayTrailer, activeScreenPlayTrailerTab);
 
   function openTrailerPopUp(screenPlayId) {
-    openPopup('screenPlayTrailer');
+    handleOpenPopup('screenPlayTrailer');
     setCurrentTrailerId(screenPlayId);
   };
   
@@ -217,7 +222,7 @@ function SecondPage() {
           (isShown && popUpText === 'screenPlayTrailer') &&
           <Popup>
             <div className='popup-inner w-full absolute top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 flex flex-col gap-3'>
-                <button className='close-popup self-center bg-black rounded-full p-3 text-gray-300' aria-label='close trailer pop up' onClick={closePopup}>
+                <button className='close-popup self-center bg-black rounded-full p-3 text-gray-300' aria-label='close trailer pop up' onClick={handleClosePopup}>
                   <p className='sr-only'>close trailer pop up</p>
                   <AiOutlineClose className='text-2xl text-gray-300' />
                 </button>

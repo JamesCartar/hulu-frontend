@@ -1,8 +1,6 @@
-import React, { useContext } from 'react'
-import { context } from '../../context/mainContext';
+import React, { useContext } from 'react';
 
 function Navbar(props) {
-    const {openPopup} = useContext(context);
     
     return (
         <nav aria-label='navbar' className="text-primary flex justify-between items-center h-16">

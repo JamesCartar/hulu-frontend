@@ -20,21 +20,11 @@ class FetchTwentyScreenPlay {
     };
 
     getTwentyMovieTrailer() {
-        return axios.get('https://api.themoviedb.org/3/movie/now_playing', {
-            params: {
-                api_key: process.env.REACT_APP_API_KEY,
-                page: 2
-            }
-        });
+        return axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&page=2`);
     };
     
     getTwentySeriesTrailer() {
-        return axios.get('https://api.themoviedb.org/3/tv/airing_today', {
-            params: {
-                api_key: process.env.REACT_APP_API_KEY,
-                page: 2
-            }
-        });
+        return axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.REACT_APP_API_KEY}&page=2`);
     };
 }
 

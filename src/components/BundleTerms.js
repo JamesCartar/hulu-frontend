@@ -19,7 +19,7 @@ function BundleTerms() {
           (“Disclaimer of Warranties, Limitation of Liability and Indemnity”), Section 13 (“Arbitration of Claims”), Section 14 (“Limitation on Time to Bring 
           a Claim”) and Section 15.3 (“Choice of Law and Forum”).
         </p>
-        <ol class="list-decimal ml-8 sm:ml-12">
+        <ol className="list-decimal ml-8 sm:ml-12">
           <li className='pb-5'>
             <span className='font-bold'>Eligibility Criteria.</span>
             {' '}

@@ -68,7 +68,8 @@ class ContextProvider extends Component {
           localStorage.setItem('user', JSON.stringify(res.data));
           this.setState({
             user: res.data
-          })
+          });
+          document.querySelector('body').style.overflowY = 'scroll';
         }))
         .catch((e) => {
           this.setErrorMsg(e.response.data.msg)

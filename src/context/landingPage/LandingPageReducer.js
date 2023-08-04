@@ -1,65 +1,66 @@
 const LandingPageReducer = (state, action) => {
     switch(action.type) {
+        case 'AUTHENTICATE':
+            return {
+                ...state,
+                isFetching: true,
+            };
+        case 'AUTHENTICATE_FAIL':
+            return {
+                ...state,
+                isFetching: false,
+                errorMsg: action.payload.message,
+            }
+        case 'AUTHENTICATE_SUCCESS':
+            return {
+                ...state,
+                isFetching: false,
+                errorMsg: '',
+                user: action.payload.user,
+            }
+        case 'LOGOUT':
+            return {
+                ...action.payload,
+                user: null,
+            }
         case 'FETCHING_START':
             return {
+                ...state,
                 isFetching: true,
-                featureMovie: {},
-                twentyPopularMovies: [],
-                twentyPopularSeries: [],
-                twentyLatestMovies: [],
-                twentyLatestSeries: [],
-                twentyMovieTrailerList: [],
-                twentySeriesTrailerList: [],
-                genres: [],
-                watchList: [],
-                error: false,
-            }
-        case 'FETCHING_FEATURE_MOVIE_SUCCESS':
+            };
+        case 'FETCHING_SUCCESS':
             return {
+                ...state,
                 isFetching: false,
-                featureMovie: action.payload.featureMovie,
-                twentyPopularMovies: state.twentyPopularMovies,
-                twentyPopularSeries: state.twentyPopularSeries,
-                twentyLatestMovies: state.twentyLatestMovies,
-                twentyLatestSeries: state.twentyLatestSeries,
-                twentyMovieTrailerList: state.twentyMovieTrailerList,
-                twentySeriesTrailerList: state.twentySeriesTrailerList,
-                genres: action.payload.genres,
-                watchList: state.watchList,
-                error: false,
-            }
-        case 'FETCHING_SCREENPLAY_SUCCESS':
+                ...action.payload,
+            };
+        case 'FETCHING_FAILURE':
             return {
+                ...state,
                 isFetching: false,
-                featureMovie: state.featureMovie,
-                twentyPopularMovies: action.payload.twentyPopularMovies,
-                twentyPopularSeries: action.payload.twentyPopularSeries,
-                twentyLatestMovies: action.payload.twentyLatestMovies,
-                twentyLatestSeries: action.payload.twentyLatestSeries,
-                twentyMovieTrailerList: action.payload.twentyMovieTrailerList,
-                twentySeriesTrailerList: action.payload.twentySeriesTrailerList,
-                genres: state.genres,
-                watchList: action.payload.watchList,
-                error: false,
-            }
-        case 'FETCHIN_FAILURE':
+                errorMsg: action.payload,
+            };
+        case 'HIDE_MESSAGE':
             return {
-                isFetching: false,
-                featureMovie: {},
-                twentyPopularMovies: [],
-                twentyPopularSeries: [],
-                twentyLatestMovies: [],
-                twentyLatestSeries: [],
-                twentyMovieTrailerList: [],
-                twentySeriesTrailerList: [],
-                genres: [],
-                watchList: [],
-                error: true,
+                ...state,
+                errorMsg: '',
+            };
+        case 'OPEN_POPUP':
+            return {
+                ...state,
+                isShown: true,
+                popUpText: action.payload.text,
+            }
+        case 'CLOSE_POPUP':
+            return {
+                ...state,
+                isShown: false,
+                popUpText: '',
             }
         default:
             return {
                 ...state
-            }
+            };
     }
 }
 

@@ -22,8 +22,7 @@ import { LandingPageContext } from './context/landingPage/LandingPageContext';
 
 
 function App() {
-  const { value: { user } } = useContext(context);
-  const { dispatch } = useContext(LandingPageContext);
+  const { state, dispatch } = useContext(LandingPageContext);
 
   
   useEffect(() => {
@@ -31,25 +30,23 @@ function App() {
 
   }, [dispatch]);
 
-  console.log(user)
-
   return (
     <div className='overflow-x-hidden'>
       <Routes>
-        <Route path='/' element={<OutsideParent />} />
-        <Route path='/home' element={ user ? <InsideParent /> : <Navigate to='/' /> } />
+        <Route path='/land' element={state.user ? <Navigate to='/home' /> : <OutsideParent />} />
+        <Route path='/home' element={ state.user ? <InsideParent /> : <Navigate to='/land' /> } />
         <Route path='/terms/disney-bundle' element={<BundleTerms />} />
-        <Route path='/home/movies/popular' element={ user ? <PopularMovie /> : <Navigate to='/' /> } />
-        <Route path='/home/movies/now_playing' element={ user ? <NowPlayingMovie /> : <Navigate to='/' /> } />
-        <Route path='/home/movies/upcoming' element={ user ? <UpcomingMovie /> : <Navigate to='/' /> } />
-        <Route path='/home/movies/top_rated' element={ user ? <TopRatedMovie /> : <Navigate to='/' /> } />
-        <Route path='/home/series/popular' element={ user ? <PopularSeries /> : <Navigate to='/' /> } />
-        <Route path='/home/series/airing_today' element={ user ? <AiringTodaySeries /> : <Navigate to='/' /> } />
-        <Route path='/home/series/on_tv' element={ user ? <OnTvSeries /> : <Navigate to='/' /> } />
-        <Route path='/home/series/top_rated' element={ user ? <TopRatedSeries /> : <Navigate to='/' /> } />
-        <Route path='/home/movies/:id' element={ user ? <MovieDetail /> : <Navigate to='/' /> } />
-        <Route path='/home/series/:id' element={ user ? <SeriesDetail /> : <Navigate to='/' />} />
-        <Route path='/home/watch_list' element={user ? <WatchList /> : <Navigate to='/' />} />
+        <Route path='/home/movies/popular' element={ state.user ? <PopularMovie /> : <Navigate to='/' /> } />
+        <Route path='/home/movies/now_playing' element={ state.user ? <NowPlayingMovie /> : <Navigate to='/' /> } />
+        <Route path='/home/movies/upcoming' element={ state.user ? <UpcomingMovie /> : <Navigate to='/' /> } />
+        <Route path='/home/movies/top_rated' element={ state.user ? <TopRatedMovie /> : <Navigate to='/' /> } />
+        <Route path='/home/series/popular' element={ state.user ? <PopularSeries /> : <Navigate to='/' /> } />
+        <Route path='/home/series/airing_today' element={ state.user ? <AiringTodaySeries /> : <Navigate to='/' /> } />
+        <Route path='/home/series/on_tv' element={ state.user ? <OnTvSeries /> : <Navigate to='/' /> } />
+        <Route path='/home/series/top_rated' element={ state.user ? <TopRatedSeries /> : <Navigate to='/' /> } />
+        <Route path='/home/movies/:id' element={ state.user ? <MovieDetail /> : <Navigate to='/' /> } />
+        <Route path='/home/series/:id' element={ state.user ? <SeriesDetail /> : <Navigate to='/' />} />
+        <Route path='/home/watch_list' element={state.user ? <WatchList /> : <Navigate to='/' />} />
       </Routes>
     </div>
   );

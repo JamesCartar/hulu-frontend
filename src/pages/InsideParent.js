@@ -7,12 +7,18 @@ import { SyncLoader } from 'react-spinners';
 import FirstPage from './inside/FirstPage';
 import SecondPage from './inside/SecondPage';
 import Footer from '../components/partials/Footer';
+import { twentyScreenPlay } from '../context/landingPage/ApiCalls';
+import { context } from '../context/mainContext';
 
 
 function InsideParent() {
-  const { isFetching } = useContext(LandingPageContext);
-
+  const { isFetching, dispatch } = useContext(LandingPageContext);
   
+  useEffect(() => {
+    twentyScreenPlay(dispatch);
+
+  }, [dispatch]);
+
 
   return (
     <div className='overflow-x-hidden'>

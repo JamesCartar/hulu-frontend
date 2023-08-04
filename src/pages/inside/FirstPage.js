@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { context } from '../../context/mainContext';
 import { LandingPageContext } from '../../context/landingPage/LandingPageContext';
 import Popup from '../../components/partials/Popup';
 
@@ -14,8 +13,8 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 
 
 function FirstPage() {
-  const {value: { isShown, popUpText, user}, openPopup, closePopup} = useContext(context);
-  const { genres ,featureMovie, handleAddToWatchList } = useContext(LandingPageContext);
+  const { state, handleAddToWatchList, handleOpenPopup, handleClosePopup } = useContext(LandingPageContext);
+
   
   const [ featureGenres, setFeatureGenres ] = useState([]);
   const [ featureMoiveVideo, setFeatureMovieVideo ] = useState('');
@@ -23,25 +22,22 @@ function FirstPage() {
   const [ isMessageShown, setIsMessageShown ] = useState(false);
 
   // style
-  let featureBgImage = featureMovie.backdrop_path ? `linear-gradient(135deg, rgba(35, 20, 55, 0.7) 0%, rgba(44, 56, 94, 0.7) 50%, rgba(51, 110, 107, 0.7) 100%), url(https://image.tmdb.org/t/p/w1280/${ featureMovie.backdrop_path })` 
+  let featureBgImage = state.featureMovie.backdrop_path ? `linear-gradient(135deg, rgba(35, 20, 55, 0.7) 0%, rgba(44, 56, 94, 0.7) 50%, rgba(51, 110, 107, 0.7) 100%), url(https://image.tmdb.org/t/p/w1280/${ state.featureMovie.backdrop_path })` 
                                                   : 'linear-gradient(135deg, #231437 0%, #2c385e 50%, #336e6b 100%)';
   const featureSectionStyle = {
     backgroundImage: featureBgImage,
     backgroundPosition: 'center'
   }
 
+
   // hook
   useEffect(() => {
-    if(localStorage.getItem('hasReloaded') === 'false') {
-      window.location.reload();
-      localStorage.setItem('hasReloaded', 'true');
-    }
-    
 
-    let tempFeatureGenres = genres.filter(genre => {
-      if(genres) {
-        for(let i = 0; i < featureMovie.genre_ids.length; i++) {
-          if(featureMovie.genre_ids[i] === genre.id) {
+
+    let tempFeatureGenres = state.genres.filter(genre => {
+      if(state.genres) {
+        for(let i = 0; i < state.featureMovie.genre_ids.length; i++) {
+          if(state.featureMovie.genre_ids[i] === genre.id) {
             return genre;
           }
         }
@@ -49,7 +45,7 @@ function FirstPage() {
     })
     setFeatureGenres(tempFeatureGenres);
 
-    axios.get(`https://api.themoviedb.org/3/movie/${featureMovie.id}/videos?language=en-US`,{
+    axios.get(`https://api.themoviedb.org/3/movie/${state.featureMovie.id}/videos?language=en-US`,{
         params: {
             api_key: 'b38617053052d14c445b6e18cafadda7'
         }
@@ -59,15 +55,15 @@ function FirstPage() {
       setFeatureMovieVideo(trailer.key);
     })
     .catch(e => console.log(e));
-  }, [ featureMovie ]);
+  }, [ ]);
 
   const handleClick = () => {
-    const user_id = user._id;
-    const poster = featureMovie.poster_path;
-    const title = featureMovie.original_title;
-    const releaseDate = featureMovie.release_date.split('-').reverse().join(', ');
-    const overView = featureMovie.overview;
-    const type = 'movie'
+    const user_id = state.user._id;
+    const poster = state.featureMovie.poster_path;
+    const title = state.featureMovie.original_title;
+    const releaseDate = state.featureMovie.release_date.split('-').reverse().join(', ');
+    const overView = state.featureMovie.overview;
+    const type = 'movie';
 
     
     handleAddToWatchList({
@@ -87,17 +83,14 @@ function FirstPage() {
       }, 3000);
     })
     .catch(e => console.log(e));
-  }
-  
-
-
+  };
   
   // render element by mapping
   let featureMovieGenreEle = featureGenres?.map((genre, index) => {
     return (
       <span key={index}>{genre.name}</span>
     )
-  })
+  });
 
 
   return (
@@ -109,20 +102,20 @@ function FirstPage() {
           </div>
       ) }
       <div className='gap-5 max-w-4xl pl-5 pt-16 pr-2 w-screen flex items-start justify-center flex-col '>
-        <p className='feature-movie-title text-2xl md:text-3xl shadow-lg px-2 py-1 mt-10 mb-3 shadow-slate-400  tracking-widest text-white break-words capitalize'>{featureMovie.title}</p>
-        <p className='max-w-full md:max-w-2xl text-gray-300'>{featureMovie.overview?.length > 250 ? featureMovie.overview?.slice(0, 250) + ' ....' : featureMovie.overview}</p>
+        <p className='feature-movie-title text-2xl md:text-3xl shadow-lg px-2 py-1 mt-10 mb-3 shadow-slate-400  tracking-widest text-white break-words capitalize'>{state.featureMovie.title}</p>
+        <p className='max-w-full md:max-w-2xl text-gray-300'>{state.featureMovie.overview?.length > 250 ? state.featureMovie.overview?.slice(0, 250) + ' ....' : state.featureMovie.overview}</p>
         <div className='flex gap-4 text-gray-400 text-sm flex-wrap'>
           {featureMovieGenreEle}
         </div>
         <div className='flex gap-2 mb-10'>
-          <button aria-label='open trailer' title='trailer' className='bg-primary p-2 px-4 rounded-full flex items-center' onClick={() => openPopup('featureTrailer')}><BsFillPlayFill className='text-lg' /> <span className='uppercase text-sm'>Trailer</span></button>
+          <button aria-label='open trailer' title='trailer' className='bg-primary p-2 px-4 rounded-full flex items-center' onClick={() => handleOpenPopup('featureTrailer')}><BsFillPlayFill className='text-lg' /> <span className='uppercase text-sm'>Trailer</span></button>
           <button  onClick={handleClick} aria-label='add to watch list' title='add watchlist' className='bg-white text-primary p-2 px-4 rounded-full flex items-center gap-1'><FiPlus className='text-lg' /> <span className=' uppercase text-sm text-gray-800'>Add List</span></button>
         </div>
         {
-          (isShown && popUpText === 'featureTrailer') &&
+          (state.isShown && state.popUpText === 'featureTrailer') &&
           <Popup>
             <div className='popup-inner w-full absolute top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 flex flex-col gap-3'>
-                <button className='close-popup self-center bg-black rounded-full p-3 text-gray-300' aria-label='close login pop up'  onClick={closePopup}>
+                <button className='close-popup self-center bg-black rounded-full p-3 text-gray-300' aria-label='close login pop up'  onClick={handleClosePopup}>
                   <p className='sr-only'>close trailer pop up</p>
                   <AiOutlineClose className='text-2xl text-gray-300' />
                 </button>

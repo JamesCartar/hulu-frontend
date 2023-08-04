@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // live sport Logos
 import sportTabBg from '../../images/sportTabBg.jpg';
 import verticalSportTabBg from '../../images/verticalSportTabBg.jpg';
@@ -26,23 +26,27 @@ const TABDATA = {
   sport: {
     tabTitle: 'Live Sports',
     tabText: 'Catch your games at home or on the go. Stream live games from major college and pro leagues including the NCAA®, NBA, NHL, NFL, and more.',
-    tabLogo: [networkLogo, espnLogo, foexsportLogo, fs1Logo]
+    tabLogo: [networkLogo, espnLogo, foexsportLogo, fs1Logo],
   },
   news: {
     tabTitle: 'Breaking News',
     tabText: "Keep pace with what's going on locally and globally with trusted opinions from all the top news networks.",
-    tabLogo: [abcLogo, cnnLogo, msnbcLogo, foxLogo]
+    tabLogo: [abcLogo, cnnLogo, msnbcLogo, foxLogo],
   },
   event: {
     tabTitle: 'Biggest Events',
     tabText: "Spectacular, can't-miss moments like the Olympics, Grammys®, Oscars®, Emmys®, and more.",
-    tabLogo: [emmyLogo, goldenGlobeLogo, grammyLogo, oscarLogo]
+    tabLogo: [emmyLogo, goldenGlobeLogo, grammyLogo, oscarLogo],
   }
 }
 
 function FourthPage() {
   const [currentTab, setCurrentTap] = useState('sport');
   const [matchWidth, setMatchWidth] = useState(() => window.matchMedia("(max-width: 840px)").matches );
+  const tabIndicatorRef = useRef(null);
+  const sportBtnRef = useRef(null);
+  const newsBtnRef = useRef(null);
+  const eventBtnRef = useRef(null);
 
   useEffect(() => {
     const handler = e => setMatchWidth(e.matches);
@@ -67,29 +71,20 @@ function FourthPage() {
     }
   }, [matchWidth]);
 
-
-  let tabIndicaterWidth;
-  let tabINdicaterPosition;
   let backgroundImage;
   if(currentTab === 'sport') {
-    tabIndicaterWidth = '80px';
-    tabINdicaterPosition = 'translateX(0)';
     if(matchWidth) {
       backgroundImage = verticalSportTabBg;
     } else {
       backgroundImage = sportTabBg;
     }
   } else if(currentTab === 'news') {
-    tabIndicaterWidth = '103px';
-    tabINdicaterPosition = 'translateX(117px)';
     if(matchWidth) {
       backgroundImage = verticalNewsTabBg;
     } else {
       backgroundImage = newsTabBg;
     }
   } else if(currentTab === 'event') {
-    tabIndicaterWidth = '105px';
-    tabINdicaterPosition = 'translateX(248px)';
     if(matchWidth) {
       backgroundImage = verticalEventTabBg;
     } else {
@@ -97,12 +92,6 @@ function FourthPage() {
     }
   }
   
-
-  let tabIndicaterStyle = {
-    transform: tabINdicaterPosition,
-    width: tabIndicaterWidth,
-  }
-
 
 
   function changeSpotlightTabs(e) {
@@ -145,22 +134,37 @@ function FourthPage() {
 
   const currentTapCard = makeCurrentTapHtml(TABDATA[currentTab]);
 
+  const updateTabIndicator = () => {
+    const activeTabButtonRef = currentTab === 'sport' ? sportBtnRef : currentTab === 'news' ? newsBtnRef : eventBtnRef;
+
+    if (activeTabButtonRef.current) {
+      const activeTabButton = activeTabButtonRef.current;
+      const indicator = tabIndicatorRef.current;
+      indicator.style.width = `${activeTabButton.offsetWidth}px`;
+      indicator.style.transform = `translateX(${activeTabButton.offsetLeft}px)`;
+    }
+  };
+  // Call the updateTabIndicator function whenever the currentTab changes
+  useEffect(() => {
+    updateTabIndicator();
+  }, [currentTab]);
+
 
 
   return (
     <div id='billboard' className='flex justify-center items-start sm:items-center min-h-screen py-28 sm:py-0 bg-darkBg bg-no-repeat bg-right bg-cover text-white' 
     style={{backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.8) -57.5%, rgba(0, 0, 0, 0) 98.72%), url('${backgroundImage}')`}}>
       <div className='p-0 sm:px-4 sm:w-5/6 overflow-x-hidden'>
-          <div className='flex w-96 sm:w-full gap-5 text-left pl-1'>
-            <div className='relative w-24'>
-              <button name='sport' className='inline-block text-xs text-left w-full font-bold pb-2' onClick={changeSpotlightTabs}>LIVE SPORTS</button>
-              <div style={tabIndicaterStyle} className='tabIndicater w-full h-1 bg-white transition-all duration-500 ease-in-out'></div>
+          <div className='flex gap-3 text-left relative lg:ml-0 ml-5 text-[11px] sm:text-sm'>
+            <div ref={tabIndicatorRef} className={`absolute bottom-0 left-0 tabIndicater h-1 bg-white transition-all duration-500 ease-in-out `}></div>
+            <div ref={sportBtnRef} fclassName='relative'>
+              <button name='sport' className='inline-block text-left w-full font-bold pb-2' onClick={changeSpotlightTabs}>LIVE SPORTS</button>
             </div>
-            <div className='relative w-28'>
-              <button name='news' className='inline-block text-xs text-left w-full font-bold pb-2' onClick={changeSpotlightTabs}>BREAKING NEWS</button>
+            <div ref={newsBtnRef} className='relative'>
+              <button name='news' className='inline-block text-left w-full font-bold pb-2' onClick={changeSpotlightTabs}>BREAKING NEWS</button>
             </div>
-            <div className='relative w-28'>
-              <button name='event' className='inline-block text-xs text-left w-full font-bold pb-2' onClick={changeSpotlightTabs}>BIGGEST EVENTS</button>
+            <div ref={eventBtnRef} className='relative'>
+              <button name='event' className='inline-block text-left w-full font-bold pb-2' onClick={changeSpotlightTabs}>BIGGEST EVENTS</button>
             </div>
           </div>
           <div className='px-4 sm:px-0 mt-10 overflow-y-hidden'>
