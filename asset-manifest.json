@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/hulu-clone/static/css/main.2a381865.css",
+    "main.js": "/hulu-clone/static/js/main.0e4f111a.js",
+    "static/media/Montserrat-VariableFont_wght.ttf": "/hulu-clone/static/media/Montserrat-VariableFont_wght.3faa3eef13649db02044.ttf",
+    "static/media/GraphikRegular.otf": "/hulu-clone/static/media/GraphikRegular.329746577f94a4f1785e.otf",
+    "static/media/sportTabBg.jpg": "/hulu-clone/static/media/sportTabBg.961233ef7b8b1cf2d7e6.jpg",
+    "static/media/newsTabBg.jpg": "/hulu-clone/static/media/newsTabBg.f630b319c2c977ccc659.jpg",
+    "static/media/eventTabBg.jpg": "/hulu-clone/static/media/eventTabBg.534ec111e72de1be116e.jpg",
+    "static/media/trending-bg.jpg": "/hulu-clone/static/media/trending-bg.142d63ec3d80fb54f4db.jpg",
+    "static/media/FUTURAB.TTF": "/hulu-clone/static/media/FUTURAB.59112448eb4527f4584c.TTF",
+    "static/media/hulu-disney-espn.png": "/hulu-clone/static/media/hulu-disney-espn.13703cbc82126391dfd1.png",
+    "static/media/verticalSportTabBg.jpg": "/hulu-clone/static/media/verticalSportTabBg.0725883df36d3eea6e51.jpg",
+    "static/media/verticalEventTabBg.jpg": "/hulu-clone/static/media/verticalEventTabBg.a392ff32210c8278a14f.jpg",
+    "static/media/verticalNewsTabBg.jpg": "/hulu-clone/static/media/verticalNewsTabBg.160739a56601a1904ea1.jpg",
+    "static/media/fs1.png": "/hulu-clone/static/media/fs1.dff938b6fac295ccff0f.png",
+    "static/media/foxnews-network-logo.svg": "/hulu-clone/static/media/foxnews-network-logo.3e8bbc65e388c3a2136e0895aae1ed8a.svg",
+    "static/media/small-hulu-disney-espn.svg": "/hulu-clone/static/media/small-hulu-disney-espn.dac38de580dd934adc5246a3c8af8514.svg",
+    "static/media/cnn-network-logo.svg": "/hulu-clone/static/media/cnn-network-logo.8b12a6039cce1e0380da5f2ad7a65b86.svg",
+    "static/media/foxsports1-network-logo-0.svg": "/hulu-clone/static/media/foxsports1-network-logo-0.fc0ea090f100f20bbf5b88b43c216b46.svg",
+    "index.html": "/hulu-clone/index.html",
+    "main.2a381865.css.map": "/hulu-clone/static/css/main.2a381865.css.map",
+    "main.0e4f111a.js.map": "/hulu-clone/static/js/main.0e4f111a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2a381865.css",
+    "static/js/main.0e4f111a.js"
+  ]
+}
