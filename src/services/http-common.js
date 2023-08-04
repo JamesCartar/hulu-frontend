@@ -8,7 +8,7 @@ if(localStorage.getItem('user')) {
 }
 
 export default axios.create({
-    baseURL: "http://www.localhost:8000",
+    baseURL: "https://hulu-backend.vercel.app",
     headers: {
         'Content-type': 'application/json',
         'Authorization': token,
