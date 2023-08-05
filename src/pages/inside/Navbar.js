@@ -40,7 +40,7 @@ function Navbar() {
 
     const handleUserLogout = () => {
         handleLogout()
-        navigate("/land");
+        navigate("/");
     }
 
 
