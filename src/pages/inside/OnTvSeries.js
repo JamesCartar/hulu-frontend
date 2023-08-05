@@ -52,7 +52,7 @@ function OnTvSeries() {
 
 
   let onTvSeriesEl = onTvSeries?.map((movie) => (
-    <div className='col-1'>
+    <div className='col-span-1'>
       <Link to={`/home/series/${movie.id}`}>
         <img className='text-primary w-full' src={`https://image.tmdb.org/t/p/w342${ movie.poster_path }`} />
       </Link>
