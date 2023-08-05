@@ -132,7 +132,7 @@ function Navbar() {
                                 <a href='/home/watch_list' className="block text-sm text-gray-900 dark:text-white">Watch List</a>
                             </li>
                             <li>
-                                <Link to='/land' onClick={handleUserLogout} className="block w-full py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
+                                <Link to='/' onClick={handleUserLogout} className="block w-full py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
                             </li>
                         </ul>
                     </li>

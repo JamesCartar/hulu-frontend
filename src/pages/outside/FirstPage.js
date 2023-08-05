@@ -211,6 +211,6 @@ function FirstPage() {
       }
     </div>
   )
-}
+};
 
 export default FirstPage;
