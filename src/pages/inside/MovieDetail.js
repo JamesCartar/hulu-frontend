@@ -26,8 +26,7 @@ import { LandingPageContext } from '../../context/landingPage/LandingPageContext
 
 function MovieDetail() {
     const params = useParams();
-    const { value: { isShown, popUpText, user}, openPopup, closePopup } = useContext(context);
-    const { handleAddToWatchList } = useContext(LandingPageContext);
+    const { state: { user, isShown, popUpText }, handleOpenPopup, handleClosePopup, handleAddToWatchList } = useContext(LandingPageContext);
 
     const [currentMovie, setCurrentMovie] = useState([]);
     const [currentMovieCredits, setCurrentMovieCredits] = useState([]);
@@ -205,7 +204,7 @@ function MovieDetail() {
               }
             </div>
             <div className='flex gap-5 mb-10 mt-5'>
-              <button aria-label='open trailer' title='trailer' className='bg-primaryfaded bg-primary p-2 px-4 rounded-full flex items-center' onClick={() => openPopup('currentMovieTrailer')}><BsFillPlayFill className='text-lg' /> <span className='uppercase text-sm'>Trailer</span></button>
+              <button aria-label='open trailer' title='trailer' className='bg-primaryfaded bg-primary p-2 px-4 rounded-full flex items-center' onClick={() => handleOpenPopup('currentMovieTrailer')}><BsFillPlayFill className='text-lg' /> <span className='uppercase text-sm'>Trailer</span></button>
               <button onClick={handleClick} aria-label='add to watch list' title='add watchlist' className='bg-white text-primary p-2 px-4 rounded-full flex items-center gap-1'><FiPlus className='text-lg' /> <span className=' uppercase text-sm text-gray-800'>Add List</span></button>
             </div>
           </div>
@@ -284,7 +283,7 @@ function MovieDetail() {
           (isShown && popUpText === 'currentMovieTrailer') &&
           <Popup>
             <div className='popup-inner w-full absolute top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 flex flex-col gap-3'>
-                <button className='close-popup self-center bg-black rounded-full p-3 text-gray-300' aria-label='close login pop up'  onClick={closePopup}>
+                <button className='close-popup self-center bg-black rounded-full p-3 text-gray-300' aria-label='close login pop up'  onClick={handleClosePopup}>
                   <p className='sr-only'>close trailer pop up</p>
                   <AiOutlineClose className='text-2xl text-gray-300' />
                 </button>
