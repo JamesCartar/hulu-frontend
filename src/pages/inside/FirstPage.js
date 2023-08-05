@@ -64,7 +64,6 @@ function FirstPage() {
     const releaseDate = state.featureMovie.release_date.split('-').reverse().join(', ');
     const overView = state.featureMovie.overview;
     const type = 'movie';
-
     
     handleAddToWatchList({
       user_id,

@@ -61,7 +61,7 @@ function PopularMovie() {
 
 
   let popularMovieEl = popularMovies?.map((movie) => (
-    <div className='w-48'>
+    <div className='col-span-1'>
       <Link to={`/home/movies/${movie.id}`}>
         <img className='text-primary w-full' src={`https://image.tmdb.org/t/p/w342${ movie.poster_path }`} />
       </Link>
@@ -83,7 +83,7 @@ function PopularMovie() {
     :
     <>
       <Navbar />
-      <div className='mt-20 flex flex-wrap gap-3 justify-center items-center min-h-screen'>
+      <div className='mt-20 gap-3 content-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 justify-center items-center min-h-screen'>
         { popularMovieEl }
       </div>
       <button onClick={handleLoadMore} className='text-primary bg-[#082541] w-1/2 py-3 mx-auto my-4 block hover:text-[#082541] hover:bg-primary'>Load More</button>
